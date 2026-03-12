@@ -2,96 +2,139 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 const ServicesHero = () => {
-    const listItems = [
-        "Competitor review",
-        "Opportunity validation",
-        "Business & market analysis",
-        "Audience research"
-    ];
+  const listItems = [
+    'Competitor review',
+    'Opportunity validation',
+    'Business & market analysis',
+    'Audience research',
+  ];
 
-    return (
-        <section className="w-full bg-white pt-0 mt-[-15px] pb-20 overflow-hidden font-inter" dir='ltr'>
-            <div className="w-full px-4 md:px-15">
-
-                <div className="relative w-full aspect-[0.8/1] md:aspect-[1.3/1] lg:aspect-[1.5/1] xl:aspect-[1.5/1]">
-
-                    {/* Background Marble clipped by SVG Mask */}
-                    <div
-                        className="absolute inset-0 z-0 bg-white"
-                        style={{
-                            maskImage: 'url("/Rectangle 53.svg")',
-                            WebkitMaskImage: 'url("/Rectangle 53.svg")',
-                            maskSize: '100% 100%',
-                            WebkitMaskSize: '100% 100%',
-                            maskRepeat: 'no-repeat',
-                            WebkitMaskRepeat: 'no-repeat',
-                            maskPosition: 'center',
-                            WebkitMaskPosition: 'center'
-                        }}
-                    >
-                        <Image
-                            src="/Union.png"
-                            alt="Discovery Hero Background"
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                    </div>
-
-                    {/* Content Layer (Absolute positioning) */}
-                    <div className="absolute inset-x-0 bottom-0 top-0 z-10 p-8 md:p-14 lg:p-20">
-
-                        {/* Discovery Title - Bottom Left area (White cutout in clip-path) */}
-                        <div className="absolute bottom-[4%] md:bottom-[10%] left-8 md:left-16 lg:left-8 max-w-xl pointer-events-auto">
-                            <h1 className="text-[70px] md:text-[100px] lg:text-[115px] font-extrabold text-[#121212] leading-[0.75] tracking-tighter mb-8  font-poppins">
-                                Discovery
-                            </h1>
-                            <p className="text-[#5D5D5D] text-[15px] md:text-[16px] font-medium leading-[1.5] mb-12 max-w-md font-inter whitespace-nowrap">
-                                We dive deep into your business, audience, and competitive<br /> landscape
-                                to uncover real opportunities and risks before anything is <br />built.
-                            </p>
-                            <div className="flex items-center gap-10">
-                                <button className=" bg-[#24314c] md:bg-gradient-to-r md:from-[#3C5079] md:to-[#10172F] text-white px-15 py-4 rounded-full text-[14px] md:text-[16px] font-bold hover:bg-[#121212] transition-colors cursor-pointer">
-                                    Clients About Us
-                                </button>
-                                <span className="text-[#121212] font-[400] text-[18px] md:text-[20px]">1-2 Weeks</span>
-                            </div>
-                        </div>
-
-                        {/* Number '01' - Middle Right cutout area (Moved to z-5 to be behind content) */}
-                        <div className="absolute top-[43%] right-10 md:right-16 lg:right-2 translate-y-[-50%] z-5 hidden lg:block pointer-events-none">
-                            <span className="text-[100px] md:text-[130px] lg:text-[150px] font-extrabold text-[#E5E5E5] leading-none select-none tracking-tighter">
-                                01
-                            </span>
-                        </div>
-
-                        {/* Process List - Middle-Bottom Right (Over the colourful image area) */}
-                        <div className="absolute bottom-[10%] right-8 md:right-24 lg:right-[35%] xl:right-[28%] flex flex-col gap-5 lg:gap-6 items-start pointer-events-auto">
-                            {listItems.map((item, index) => (
-                                <div key={index} className="flex items-center gap-6 group">
-                                    <div className="flex items-center">
-                                        {/* Glow Dot on far left, then line, then Tiny Dot on right, then Text */}
-                                        <div className="w-[7px] h-[7px] bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.4)]" />
-                                        <div className="w-10 md:w-14 lg:w-16 h-[1.2px] bg-white/40" />
-                                        <div className="w-[3px] h-[3px] bg-white/60 rounded-full" />
-                                    </div>
-                                    <span className="text-white font-bold text-[14px] md:text-[16px] lg:text-[18px] tracking-tight drop-shadow-md whitespace-nowrap">
-                                        {item}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-
-
+  return (
+    <section
+      className="w-full overflow-hidden pt-0 pb-10 lg:pb-20 font-inter"
+      dir="ltr"
+    >
+      <div className="w-full px-4 lg:px-15">
+        <div className="relative w-full lg:aspect-[1.5/1] xl:aspect-[1.5/1]">
+          {/* Mobile layout */}
+          <div className="block xl:hidden">
+            <div className="relative w-full aspect-square overflow-hidden rounded-[30px] bg-white">
+              <Image
+                src="/services-hero-mobile.svg"
+                alt="Discovery Hero Background"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-        </section>
-    );
+
+            <div className="px-2 pt-8">
+              <h1 className="font-poppins text-[50px] sm:text-[76px] font-extrabold leading-[0.88] tracking-[-0.05em] text-[#111111]">
+                Discovery
+              </h1>
+
+              <p className="mt-5 max-w-[640px] text-[19px] font-medium leading-[1.24] text-[#666666]">
+                We dive deep into your business, audience, and competitive
+                landscape to uncover real opportunities and risks before
+                anything is built.
+              </p>
+
+              <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
+                <button className="rounded-full bg-gradient-to-r from-[#3c5079] to-[#10172f] px-6 sm:px-8 py-4 text-[13px] sm:text-[14px] font-bold text-white shadow-sm transition hover:opacity-95">
+                  Clients About Us
+                </button>
+
+                <span className="whitespace-nowrap text-[18px] font-normal text-[#111111]">
+                  1–2 Weeks
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop layout */}
+          <div className="relative hidden w-full h-full xl:block">
+            {/* Background Marble clipped by SVG Mask */}
+            <div
+              className="absolute inset-0 z-0 bg-white"
+              style={{
+                maskImage: 'url("/Rectangle 53.svg")',
+                WebkitMaskImage: 'url("/Rectangle 53.svg")',
+                maskSize: '100% 100%',
+                WebkitMaskSize: '100% 100%',
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+                maskPosition: 'center',
+                WebkitMaskPosition: 'center',
+              }}
+            >
+              <Image
+                src="/Union.png"
+                alt="Discovery Hero Background"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+
+            {/* Content Layer */}
+            <div className="absolute inset-x-0 top-0 bottom-0 z-10 p-8 md:p-14 lg:p-20">
+              {/* Discovery Title */}
+              <div className="absolute bottom-[4%] left-8 max-w-xl pointer-events-auto md:bottom-[10%] md:left-16 lg:bottom-[6%] lg:left-8">
+                <h1 className="mb-6 lg:mb-8 font-poppins text-[70px] font-extrabold leading-[0.75] tracking-tighter text-[#121212] lg:text-[65px] xl:text-[90px]">
+                  Discovery
+                </h1>
+
+                <p className="mb-8 lg:mb-12 max-w-[350px] lg:max-w-[400px] xl:max-w-lg xl:whitespace-nowrap text-[14px] font-medium leading-[1.5] text-[#5D5D5D] lg:text-[15px] xl:text-[16px]">
+                  We dive deep into your business, audience, and competitive
+                  <br />
+                  landscape to uncover real opportunities and risks before
+                  anything is
+                  <br />
+                  built.
+                </p>
+
+                <div className="flex items-center gap-10">
+                  <button className="cursor-pointer rounded-full bg-[#24314c] px-10 xl:px-15 py-3 xl:py-4 font-inter text-[13px] xl:text-[14px] font-bold text-white transition-colors hover:bg-[#121212] lg:bg-gradient-to-r lg:from-[#3C5079] lg:to-[#10172F] lg:text-[14px] xl:text-[16px]">
+                    Clients About Us
+                  </button>
+
+                  <span className="text-[16px] xl:text-[18px] font-[400] text-[#121212] lg:text-[18px] xl:text-[20px]">
+                    1-2 Weeks
+                  </span>
+                </div>
+              </div>
+
+              {/* Number */}
+              <div className="pointer-events-none absolute top-[43%] right-10 z-[5] hidden translate-y-[-50%] lg:block lg:right-2 md:right-16">
+                <span className="select-none text-[100px] font-extrabold leading-none tracking-tighter text-[#E5E5E5] md:text-[130px] lg:text-[150px]">
+                  01
+                </span>
+              </div>
+
+              {/* Process List */}
+              <div className="pointer-events-auto absolute bottom-[15%] right-8 flex flex-col items-start gap-5 md:right-24 lg:right-[35%] lg:gap-6 xl:right-[28%]">
+                {listItems.map((item, index) => (
+                  <div key={index} className="group flex items-center gap-4">
+                    <div className="flex items-center">
+                      <div className="h-[7px] w-[7px] rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.4)]" />
+                      <div className="h-[1.2px] w-10 bg-white/40 md:w-14 lg:w-16" />
+                      <div className="h-[3px] w-[3px] rounded-full bg-white/60" />
+                    </div>
+
+                    <span className="whitespace-nowrap text-[14px] font-bold tracking-tight text-white drop-shadow-md lg:text-[15px] xl:text-[15px]">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default ServicesHero;

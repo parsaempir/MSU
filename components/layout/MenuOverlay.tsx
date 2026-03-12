@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -77,6 +77,22 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {
         setActiveImage(image);
     };
 
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            // Optional: prevent scroll on html element too for some mobile browsers
+            document.documentElement.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+            document.documentElement.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+            document.documentElement.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -88,7 +104,7 @@ const MenuOverlay: React.FC<MenuOverlayProps> = ({ isOpen, onClose }) => {
                     className="fixed inset-0 z-[100] flex flex-col md:flex-row overflow-hidden"
                     dir="ltr"
                 >
-                    <div className="lg:hidden flex flex-col w-full h-full bg-[#F3EFE8] p-8 relative overflow-y-auto" dir="ltr">
+                    <div className="lg:hidden flex flex-col w-full h-[100dvh] bg-[#F3EFE8] p-8 relative overflow-hidden" dir="ltr">
                         <button
                             onClick={onClose}
                             className="absolute top-8 right-8 z-[110] p-2 hover:opacity-70 transition-opacity cursor-pointer"
